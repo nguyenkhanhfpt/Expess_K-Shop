@@ -9,7 +9,7 @@ const port = 3000;
 
 // set view engines
 app.set('view engine', 'pug');
-app.set('views', '/views');
+app.set('views', './views');
 
 // use middleware
 app.use(cookieParser());
@@ -21,7 +21,7 @@ app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {
-    res.send('Home');
+    res.render('home');
 });
 
 app.listen(port, () => console.log(`Server is running in port ${port}`));

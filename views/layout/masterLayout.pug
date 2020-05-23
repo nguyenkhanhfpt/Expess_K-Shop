@@ -1,0 +1,35 @@
+html 
+head
+    title K-Shop
+    link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') 
+    link(rel="stylesheet", href="http://localhost:3000/style/main.css")
+body
+    nav.nav
+        .container
+            .d-flex.justify-content-end.nav-top.mb-md-2
+                a(href='') San Pham
+                a(href='') Gioi Thieu
+                a(href='') Dang Ky
+                a(href='') Dang Nhap
+            .d-flex.justify-content-between.align-items-baseline
+                .d-flex.align-items-center.logo
+                    #bars.d-inline.d-md-none.menu-mobel
+                        i.fal.fa-bars
+                    h2.mb-0
+                        a.text-decoration-none.text-white(href='') K-Tech
+                .form-group.has-search
+                    form.position-relative(action='')
+                        i.far.fa-search.form-control-feedback
+                        input#formSearch.form-control(type='text', placeholder='Search')
+                        #content.position-absolute.w-100.bg-white.rounded(style='z-index: 10')
+                .cart.mr-3.mr-sm-5
+                    a.d-inline.mr-3.text-decoration-none.position-relative(href='')
+                        i.fal.fa-shopping-cart.text-white.m-0
+                        span#countCart.numCart
+
+    block content
+
+
