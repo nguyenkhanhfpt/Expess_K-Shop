@@ -1,0 +1,23 @@
+extends ../../layout/adminLayout
+block content
+    h2 View Product
+
+    .d-flex
+        img(src="http://localhost:3000/images/" +product.imageProduct, alt="" height="350")
+        div
+            form(action="/admin/products/update", method="POST", enctype="multipart/form-data") 
+                .form-group
+                    label(for='name') Name product
+                    input#name.form-control(type='text', name="nameProduct",
+                    value= product.nameProduct, placeholder='Enter name')
+                .form-group
+                    label(for='price') Price Product
+                    input#price.form-control(type='text', name="price", 
+                    value= product.price, placeholder='Price')
+                .form-group
+                    label(for='img') Image Product
+                    input#img.form-control-file(type='file', name="imageProduct")
+                    input(type="hidden", name="oldImage", value= product.imageProduct)
+                    input(type="hidden", name="_id", value= product._id)
+                
+                button.btn.btn-primary(type='submit') Submit
