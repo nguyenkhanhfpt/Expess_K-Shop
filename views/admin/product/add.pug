@@ -1,0 +1,16 @@
+extends ../../layout/adminLayout
+block content
+    h2 Add new product
+
+    form(action="", method="POST", enctype="multipart/form-data") 
+        .form-group
+            label(for='name') Name product
+            input#name.form-control(type='text', name="nameProduct", placeholder='Enter name')
+        .form-group
+            label(for='price') Price Product
+            input#price.form-control(type='text', name="price", placeholder='Price')
+        .form-group
+            label(for='img') Image Product
+            input#img.form-control-file(type='file', name="imageProduct")
+        
+        button.btn.btn-primary(type='submit') Submit
