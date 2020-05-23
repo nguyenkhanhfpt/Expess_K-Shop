@@ -28,3 +28,9 @@ module.exports.postAddNew = async (req, res) => {
 
     res.redirect('/admin/products');
 }
+
+module.exports.delete = async (req, res) => {
+    const {id} = req.params;
+    await Products.deleteOne({_id: id});
+    res.redirect('/admin/products');
+}

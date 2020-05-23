@@ -8,6 +8,7 @@ block content
                 th(scope='col') Product id
                 th(scope='col') Name
                 th(scope='col') Price
+                th
         tbody
             each product in products
                 tr 
@@ -16,5 +17,7 @@ block content
                         img(src="http://localhost:3000/images/" +product.imageProduct, alt="", width="50", height="70")
                         span.ml-2= product.nameProduct
                     td= product.price.toLocaleString() + ' vnd'
+                    td 
+                        a(onClick="return confirm('Do you want delete product')", href="/admin/products/delete/" +product._id).btn.btn-danger Delete
 
     a(href="/admin/products/add").btn.btn-primary Add new product
