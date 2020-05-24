@@ -12,13 +12,14 @@ const port = 3000;
 
 // require router
 const adminRouter = require('./routers/admin.router');
+const authRouter = require('./routers/auth.router');
 
 // set view engines
 app.set('view engine', 'pug');
 app.set('views', './views');
 
 // use middleware
-app.use(cookieParser());
+app.use(cookieParser(process.env.SIGNED_KEY));
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -32,5 +33,6 @@ app.get('/', (req, res) => {
 
 
 app.use('/admin', adminRouter);
+app.use('/auth', authRouter);
 
 app.listen(port, () => console.log(`Server is running in port ${port}`));
