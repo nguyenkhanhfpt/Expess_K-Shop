@@ -14,6 +14,9 @@ const port = 3000;
 const adminRouter = require('./routers/admin.router');
 const authRouter = require('./routers/auth.router');
 
+// require validation
+const authValidation = require('./validation/auth.validation');
+
 // set view engines
 app.set('view engine', 'pug');
 app.set('views', './views');
@@ -32,7 +35,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.use('/admin', adminRouter);
+app.use('/admin', authValidation.checkLogin, adminRouter);
 app.use('/auth', authRouter);
 
 app.listen(port, () => console.log(`Server is running in port ${port}`));
