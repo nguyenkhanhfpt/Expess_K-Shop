@@ -3,5 +3,16 @@ block content
     header.header 
         img(src="http://localhost:3000/images/photo4.jpg", alt="")
 
-        
-        
+    .container.pt-3
+        h2 Poducts
+
+        .row.products
+            each product in products
+                .col-md-3
+                    .card
+                        img.card-img-top(src=`http://localhost:3000/images/${product.imageProduct}`)
+                        .card-body
+                            h5.card-title= product.nameProduct
+                            p.card-text= product.price.toLocaleString() + ' vnd'
+                            a.btn.btn-primary(href='#') Add to cart
+            
