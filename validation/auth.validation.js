@@ -25,7 +25,8 @@ module.exports.signup = async (req, res, next) => {
         errors.push('User is not empty!');
         res.render('./auth/signup', {
             errors: errors,
-            values: req.body
+            values: req.body,
+            csrfToken: req.csrfToken()
         }); 
         return;
     }
@@ -34,7 +35,8 @@ module.exports.signup = async (req, res, next) => {
         errors.push('Password is not empty!');
         res.render('./auth/signup', {
             errors: errors,
-            values: req.body
+            values: req.body,
+            csrfToken: req.csrfToken()
         });
         return;
     }
@@ -43,7 +45,8 @@ module.exports.signup = async (req, res, next) => {
         errors.push('Confirm password is not empty!');
         res.render('./auth/signup', {
             errors: errors,
-            values: req.body
+            values: req.body,
+            csrfToken: req.csrfToken()
         });
         return;
     }
@@ -52,7 +55,8 @@ module.exports.signup = async (req, res, next) => {
         errors.push("Confirm password and password does' match!");
         res.render('./auth/signup', {
             errors: errors,
-            values: req.body
+            values: req.body,
+            csrfToken: req.csrfToken()
         });
         return;
     }
@@ -63,10 +67,15 @@ module.exports.signup = async (req, res, next) => {
         errors.push("User already exists!");
         res.render('./auth/signup', {
             errors: errors,
-            values: req.body
+            values: req.body,
+            csrfToken: req.csrfToken()
         });
         return;
     }
 
     next();
+}
+
+module.exports.login = (req, res, next) => {
+
 }

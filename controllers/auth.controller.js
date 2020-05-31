@@ -2,11 +2,15 @@ const Users = require('../models/users.model');
 const md5 = require('md5');
 
 module.exports.index = (req, res) => {
-    res.render('./auth/login');
+    res.render('./auth/login', {
+        csrfToken: req.csrfToken()
+    });
 }
 
 module.exports.viewSignup = (req, res) => {
-    res.render('./auth/signup');
+    res.render('./auth/signup', {
+        csrfToken: req.csrfToken()
+    });
 }
 
 module.exports.signup = async (req, res) => {
@@ -18,7 +22,8 @@ module.exports.signup = async (req, res) => {
     await Users.create(data);
 
     res.render('./auth/signup', {
-        success: 'Sign up successful'
+        success: 'Sign up successful',
+        csrfToken: req.csrfToken()
     });
 }
 
@@ -29,7 +34,8 @@ module.exports.login = async (req, res) => {
     if(!user) {
         res.render('./auth/login', {
             errors: ['User is not exist!'],
-            values: req.body
+            values: req.body,
+            csrfToken: req.csrfToken()
         });
         return;
     }
@@ -39,7 +45,8 @@ module.exports.login = async (req, res) => {
     if(passwordHash != user.password) {
         res.render('./auth/login', {
             errors: ['Password is wrong!'],
-            values: req.body
+            values: req.body,
+            csrfToken: req.csrfToken()
         });
         return;
     }

@@ -12,6 +12,7 @@ block content
             .alert.alert-success= success
 
         form(action="", method="POST")
+            input(type="hidden", name="_csrf", value= csrfToken)
             .form-group
                 label(for='name') User Name
                 input#name.form-control(type='text', name="userName", 

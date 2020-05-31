@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const csrf = require('csurf');
 
 mongoose.connect('mongodb://localhost:27017/k-shop'); // connect db
 
@@ -31,6 +32,7 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.use(express.static('public'));
+app.use(csrf({cookie: true}));
 
 // use router
 app.use('/', homeRouter);
