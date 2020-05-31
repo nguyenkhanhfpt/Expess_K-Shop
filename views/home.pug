@@ -10,7 +10,8 @@ block content
             each product in products
                 .col-md-3
                     .card
-                        img.card-img-top(src=`http://localhost:3000/images/${product.imageProduct}`)
+                        a(href=`/products/${product._id}`)
+                            img.card-img-top(src=`http://localhost:3000/images/${product.imageProduct}`)
                         .card-body
                             h5.card-title= product.nameProduct
                             p.card-text= product.price.toLocaleString() + ' vnd'

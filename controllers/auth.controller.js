@@ -5,6 +5,23 @@ module.exports.index = (req, res) => {
     res.render('./auth/login');
 }
 
+module.exports.viewSignup = (req, res) => {
+    res.render('./auth/signup');
+}
+
+module.exports.signup = async (req, res) => {
+    const data = {
+        userName: req.body.userName,
+        password: md5(req.body.password)
+    }
+
+    await Users.create(data);
+
+    res.render('./auth/signup', {
+        success: 'Sign up successful'
+    });
+}
+
 module.exports.login = async (req, res) => {
     const {userName, password} = req.body; 
     const user = await Users.findOne({userName: userName});
