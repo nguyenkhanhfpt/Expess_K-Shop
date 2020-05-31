@@ -1,0 +1,23 @@
+extends ../layout/masterLayout
+block content
+    .container.pt-5
+        .row.products-page
+            .col-md-3
+                form(action="/products/search").form-product#formSearchPro
+                    input(type="text", placeholder="Search...")
+                    .search#search
+                        i.fas.fa-search
+            .col-md-9
+                .row
+                    each product in products
+                        .col-md-3
+                            .card
+                                a(href=`/products/${product._id}`) 
+                                    img.card-img-top(src=`http://localhost:3000/images/${product.imageProduct}`)
+                                .card-body
+                                    .products-title= product.nameProduct
+                                    p.card-text= product.price.toLocaleString() + ' vnd'
+                                    a.btn.btn-primary(href='#') Add to cart
+
+    script(src='http://localhost:3000/js/main.js') 
+

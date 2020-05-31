@@ -14,6 +14,7 @@ const port = 3000;
 const homeRouter = require('./routers/home.router');
 const adminRouter = require('./routers/admin.router');
 const authRouter = require('./routers/auth.router');
+const productsRouter = require('./routers/products.router');
 
 // require validation
 const authValidation = require('./validation/auth.validation');
@@ -33,6 +34,7 @@ app.use(express.static('public'));
 
 // use router
 app.use('/', homeRouter);
+app.use('/products', productsRouter);
 app.use('/admin', authValidation.checkLogin, adminRouter);
 app.use('/auth', authRouter);
 

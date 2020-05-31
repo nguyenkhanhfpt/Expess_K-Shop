@@ -4,6 +4,10 @@
     --main-body-color : #F8F8FA;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 nav {
     background-color: var(--main-color);
     padding: 5px 0;
@@ -71,4 +75,48 @@ nav {
 
 .products .card {
     margin-bottom: 2rem;
+}
+
+
+/* products page */
+.products-page .card {
+    margin-bottom: 1rem;
+}
+
+.products-title {
+    width: 100%;
+    padding-bottom: .5rem;
+
+    font-size: 1.1rem;
+    font-weight: 500;
+
+    white-space: nowrap;  
+    overflow: hidden;
+    text-overflow: ellipsis; 
+
+}
+
+.products-page .card-title {
+    font-size: 1rem;
+}
+
+.form-product {
+    display: flex;
+    align-items: center;
+}
+
+.form-product input {
+    width: 80%;
+    border: 1px solid #f2f2f2;
+    padding: 8px 5px;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+
+    padding: 5px;
+    width: 20%;
+
+    cursor: pointer;
 }
