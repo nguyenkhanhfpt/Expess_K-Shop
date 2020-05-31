@@ -7,13 +7,32 @@ module.exports.checkLogin = async (req, res, next) => {
         return;
     }
 
-    const checkCookie = await Users.findOne({_id: cookie});
+    const user = await Users.findOne({_id: cookie});
 
-    if(!checkCookie) {
+    if(!user) {
         res.redirect('/auth/login');
         return;
     }
 
+    next();
+}
+
+module.exports.checkName = async (req, res, next) => {
+    const cookie = req.signedCookies.userName;
+
+    if(!cookie) {
+        next();
+        return;
+    }
+
+    const user = await Users.findOne({_id: cookie});
+
+    if(!user) {
+        next();
+        return;
+    }
+
+    res.locals.userName = user.userName;
     next();
 }
 

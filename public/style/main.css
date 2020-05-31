@@ -17,6 +17,7 @@ nav {
     max-width: 1200px;
 }
 
+/* Menu */
 .nav-top a {
     color: #fff;
     font-size: .9rem;
@@ -29,6 +30,11 @@ nav {
     color: #fff;
     font-size: 1.8rem;
     margin-right: 1rem;
+}
+
+.dropdown-menu a{
+    color: black;
+    margin: 0;
 }
 
 .logo h2 {

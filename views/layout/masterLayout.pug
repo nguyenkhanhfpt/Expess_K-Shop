@@ -2,19 +2,28 @@ html
 head
     title K-Shop
     script(src="https://kit.fontawesome.com/a5910b1756.js", crossorigin="anonymous")
-    link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
-    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') 
+    link(rel="stylesheet",href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css")
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js') 
     link(rel="stylesheet", href="http://localhost:3000/style/main.css")
 body
     nav.nav
         .container
             .d-flex.justify-content-end.nav-top.mb-md-2
-                a(href='/products') San Pham
-                a(href='') Gioi Thieu
-                a(href='/auth/signup') Dang Ky
-                a(href='/auth/login') Dang Nhap
+                a(href='/products') Products
+                a(href='') Introduce
+                if userName
+                    .dropdown
+                        a#dropdownMenuLink.dropdown-toggle(href='#', data-toggle='dropdown', 
+                        aria-haspopup='true', aria-expanded='false')= userName
+                        .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                            a.dropdown-item(href='#') Information
+                            a.dropdown-item(href='/admin') Admin
+                            a.dropdown-item(href='/auth/logout').text-danger Log out
+                else
+                    a(href='/auth/signup') Sign up
+                    a(href='/auth/login') Sign in
             .d-flex.justify-content-between.align-items-baseline
                 .d-flex.align-items-center.logo
                     #bars.d-inline.d-md-none.menu-mobel
@@ -30,6 +39,7 @@ body
                     a.d-inline.mr-3.text-decoration-none.position-relative(href='')
                         i.fal.fa-shopping-cart.text-white.m-0
                         span#countCart.numCart
+    
     block content
 
 

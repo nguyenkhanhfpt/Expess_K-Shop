@@ -25,6 +25,8 @@ module.exports.signup = async (req, res) => {
         success: 'Sign up successful',
         csrfToken: req.csrfToken()
     });
+
+    app.locals.userName = data.userName;
 }
 
 module.exports.login = async (req, res) => {
@@ -54,6 +56,11 @@ module.exports.login = async (req, res) => {
     res.cookie('userName', user.id, {
         signed: true
     });
-    res.redirect('/');
 
+    res.redirect('/');
+}
+
+module.exports.logout = (req, res) => {
+    res.clearCookie('userName');
+    res.redirect('/');
 }
